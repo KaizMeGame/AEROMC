@@ -1,0 +1,16 @@
+<h1>ADMIN DASHBOARD</h1>
+<div id="stats"></div>
+<div id="postsDiv"></div>
+
+<script type="module">
+import { api } from "./api.js";
+
+const token = localStorage.getItem("token");
+
+api.stats(token).then(s => {
+  stats.innerHTML = `
+    <p>Users: ${s.users}</p>
+    <p>Posts: ${s.posts}</p>
+  `;
+});
+</script>

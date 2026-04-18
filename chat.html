@@ -1,0 +1,17 @@
+<h1>Realtime Chat</h1>
+<input id="msg">
+<button onclick="send()">Send</button>
+<div id="box"></div>
+
+<script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+<script>
+const socket = io("https://YOUR_BACKEND");
+
+function send() {
+  socket.emit("chat", msg.value);
+}
+
+socket.on("chat", m => {
+  box.innerHTML += "<p>"+m+"</p>";
+});
+</script>
